@@ -15,8 +15,13 @@ app.use((err, req, res, next) => {
     res.json({ name: err.name, msg: err.message })
 })
 
+
 app.get("/", (req, res) => {
     res.send("Hello There! Please go to /users in order to access data.");
+})
+
+app.get('*', (req, res) => {
+    res.status(404).send("Wrong Way!!");
 })
 
 app.listen(config.port, console.log(`Server listening on port ${config.port}`));
